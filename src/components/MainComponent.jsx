@@ -1,6 +1,7 @@
 import React from 'react'
+import CardResultsComponent from './CardResultsComponent'
 
-export default function MainComponent() {
+export default function MainComponent({results}) {
   return (
     <>
     <div className="col-12 col-md-9 offset-md-3 mainPage">
@@ -25,7 +26,12 @@ export default function MainComponent() {
         <div className="col-10">
           <div id="rock">
             <h2>Rock Classics</h2>
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="rockSection"></div>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3" id="rockSection">
+                 {results.length > 0 && results.map(result =>(
+                    <CardResultsComponent result={result}/>
+                ))  }
+                
+            </div>
           </div>
         </div>
       </div>

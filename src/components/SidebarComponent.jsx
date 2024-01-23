@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function SidebarComponent() {
+export default function SidebarComponent({setResults}) {
 
     let headers = new Headers({
         // sets the headers
@@ -9,7 +9,7 @@ export default function SidebarComponent() {
       })
 
     const [search, setSearch ] = useState("Metallica");
-    const [results, setResults ] = useState([]);
+    
 
     function searchFetch(){
         fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${search}`, {
@@ -18,11 +18,18 @@ export default function SidebarComponent() {
           })
         .then(response => response.json())
         .then(json => {
-            console.log(json);
-            setResults(json);
+            console.log(json.data);
+            setResults(json.data);
         })
         .catch(console.error)
     }
+
+    //fare il search con 'Enter'
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+          searchFetch();
+        }
+      };
 
 
 
@@ -67,6 +74,9 @@ export default function SidebarComponent() {
                       placeholder="Search"
                       aria-label="Search"
                       aria-describedby="basic-addon2"
+                      value={search}
+                      onChange={(e)=>setSearch(e.target.value)}
+                      onKeyDown={handleKeyPress}
                     />
                     <div className="input-group-append" style={{ marginBottom: '4%' }}>
                       <button
