@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import  Logo  from '../assets/Spotify_Logo.png';
+import { Link } from 'react-router-dom';
 
 export default function SidebarComponent({setResults}) {
 
@@ -38,9 +40,11 @@ export default function SidebarComponent({setResults}) {
      <div className="col-2">
       <nav className="navbar navbar-expand-md navbar-white bg-navbar fixed-left justify-content-between" id="sidebar">
         <div className="nav-container">
+        <Link to="/" > 
           <a className="navbar-brand" href="index.html">
-            <img src="logo/Spotify_Logo.png" alt="Spotify_Logo" width="131" height="40" />
+            <img src={Logo} alt="Spotify_Logo" width="131" height="40" />
           </a>
+        </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -56,9 +60,11 @@ export default function SidebarComponent({setResults}) {
             <div className="navbar-nav">
               <ul>
                 <li>
+                <Link to="/" > 
                   <a className="nav-item nav-link" href="index.html">
                     <i className="fas fa-home fa-lg"></i>&nbsp; Home
                   </a>
+                </Link>
                 </li>
                 <li>
                   <a className="nav-item nav-link" href="#">
@@ -79,6 +85,7 @@ export default function SidebarComponent({setResults}) {
                       onKeyDown={handleKeyPress}
                     />
                     <div className="input-group-append" style={{ marginBottom: '4%' }}>
+                      <Link to="/">
                       <button
                         className="btn btn-outline-secondary btn-sm"
                         type="button"
@@ -87,6 +94,7 @@ export default function SidebarComponent({setResults}) {
                       >
                         GO
                       </button>
+                      </Link>
                     </div>
                   </div>
                 </li>
