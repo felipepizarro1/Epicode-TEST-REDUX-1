@@ -42,6 +42,7 @@ export default function AlbumComponent() {
   return (
     <>
     {albumData && 
+    <div class="col-12 col-md-9 offset-md-3 mainPage">
     <div className="row">
       <div className="col-md-3 pt-5 text-center" id="img-container">
         <img src={albumData.cover} className="card-img img-fluid" alt="Album" />
@@ -77,6 +78,7 @@ export default function AlbumComponent() {
 
         </div>
       </div>
+    </div>
     </div>
     }
     </>
